@@ -5,5 +5,5 @@ A simple Go project built for learning purposes. It allows scanning and modifyin
 
 ## Build:
 ```shell
-go build
+go build -o dist/GoMemoryEditor.exe ./cmd
 ```
