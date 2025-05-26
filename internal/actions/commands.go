@@ -16,6 +16,11 @@ func Processes(_ []string) {
 }
 
 func SelectProcess(args []string) {
+	if len(args) != 1 {
+		fmt.Println("Incorrect number of arguments.")
+		return
+	}
+
 	id, err := strconv.Atoi(args[0])
 
 	if err != nil {
@@ -39,11 +44,18 @@ func Exit(_ []string) {
 }
 
 func Search(args []string) {
+	if len(args) != 1 {
+		fmt.Println("Incorrect number of arguments.")
+		return
+	}
+
 	targetValue, err := strconv.Atoi(args[0])
 	if err != nil {
 		fmt.Println("Invalid arguments")
 		return
 	}
+
+	internal.FoundAddresses = make([]uintptr, 0)
 
 	fmt.Println("Searching...")
 
@@ -65,6 +77,11 @@ func Search(args []string) {
 }
 
 func Research(args []string) {
+	if len(args) != 1 {
+		fmt.Println("Incorrect number of arguments.")
+		return
+	}
+
 	value, err := strconv.Atoi(args[0])
 	if err != nil {
 		fmt.Println("Invalid arguments")
@@ -97,4 +114,14 @@ func ModifyAddressValue(args []string) {
 	} else {
 		fmt.Println("Failed to write memory.")
 	}
+}
+
+func Help(_ []string) {
+	help := "Commands:\n"
+
+	for _, command := range commands {
+		help += command.Print()
+	}
+
+	fmt.Print(help)
 }
