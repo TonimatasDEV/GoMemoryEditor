@@ -2,9 +2,9 @@ package actions
 
 import (
 	"fmt"
-	"memChanger/internal"
-	"memChanger/internal/memory"
-	"memChanger/internal/process"
+	"github.com/TonimatasDEV/GoMemoryEditor/internal"
+	"github.com/TonimatasDEV/GoMemoryEditor/internal/memory"
+	"github.com/TonimatasDEV/GoMemoryEditor/internal/process"
 	"os"
 	"strconv"
 )

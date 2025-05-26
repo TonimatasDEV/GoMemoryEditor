@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"memChanger/internal/actions"
+	"github.com/TonimatasDEV/GoMemoryEditor/internal/actions"
 	"os"
 )
 

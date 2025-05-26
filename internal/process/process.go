@@ -1,7 +1,7 @@
 package process
 
 import (
-	"memChanger/internal/system"
+	"github.com/TonimatasDEV/GoMemoryEditor/internal/system"
 	"strings"
 	"syscall"
 	"unsafe"

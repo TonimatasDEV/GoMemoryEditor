@@ -3,8 +3,8 @@ package memory
 import (
 	"encoding/binary"
 	"fmt"
-	"memChanger/internal"
-	"memChanger/internal/system"
+	"github.com/TonimatasDEV/GoMemoryEditor/internal"
+	"github.com/TonimatasDEV/GoMemoryEditor/internal/system"
 	"strconv"
 	"syscall"
 	"unsafe"
