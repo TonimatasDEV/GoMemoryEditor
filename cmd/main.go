@@ -9,6 +9,9 @@ import (
 
 func main() {
 	actions.Init()
+
+	fmt.Println("Welcome to GoMemoryEditor! Use \"help\" to see our command.")
+
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {

@@ -36,7 +36,7 @@ func SelectProcess(args []string) {
 	}
 
 	internal.SelectedProcess = hProcess
-	fmt.Println("Selected process:", internal.SelectedProcess)
+	fmt.Println("Selected process:", process.GetProcessName(uint32(id)))
 }
 
 func Exit(_ []string) {
@@ -60,8 +60,8 @@ func Search(args []string) {
 	fmt.Println("Searching...")
 
 	var address uintptr
-
-	for address = 0x00000000; address < 0x7FFFFFFF; {
+	amount := 0
+	for address = 0x00000000; address < uintptr(memory.GetMaxAddress()); {
 		ret, memoryInfo := memory.GetMemoryInfo(address)
 
 		if ret == 0 {
@@ -70,10 +70,13 @@ func Search(args []string) {
 
 		if memory.IsMemoryModifiable(memoryInfo) {
 			memory.AddValueWithTargetFromRegion(memoryInfo, int32(targetValue))
+			amount++
 		}
 
 		address = memoryInfo.BaseAddress + memoryInfo.RegionSize
 	}
+
+	fmt.Printf("Found %v addresses with value %v\n", amount, targetValue)
 }
 
 func Research(args []string) {
@@ -90,7 +93,8 @@ func Research(args []string) {
 
 	fmt.Println("Researching...")
 
-	memory.FilterByNewValue(int32(value))
+	amount := memory.FilterByNewValue(int32(value))
+	fmt.Printf("Found %v addresses with value %v\n", amount, value)
 }
 
 func ModifyAddressValue(args []string) {

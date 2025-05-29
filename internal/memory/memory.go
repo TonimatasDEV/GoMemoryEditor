@@ -61,9 +61,10 @@ func WriteMemory(address uintptr, value int32) (bool, uintptr) {
 	}
 }
 
-func FilterByNewValue(newValue int32) {
+func FilterByNewValue(newValue int32) int {
 	var filtered []uintptr
 
+	amount := 0
 	for _, address := range internal.FoundAddresses {
 		ret, buffer, bytesRead := ReadMemory(internal.SelectedProcess, address, 4)
 
@@ -75,10 +76,12 @@ func FilterByNewValue(newValue int32) {
 		if currentValue == newValue {
 			fmt.Printf("Found changed value at address: 0x%X - %d\n", address, currentValue)
 			filtered = append(filtered, address)
+			amount++
 		}
 	}
 
 	internal.FoundAddresses = filtered
+	return amount
 }
 
 func ConvStrToUintptr(str string) (uintptr, error) {

@@ -20,6 +20,7 @@ var (
 	ReadProcessMemory      = kernel32.NewProc("ReadProcessMemory")
 	WriteProcessMemory     = kernel32.NewProc("WriteProcessMemory")
 	VirtualQueryEx         = kernel32.NewProc("VirtualQueryEx")
+	GlobalMemoryStatusEx   = kernel32.NewProc("GlobalMemoryStatusEx")
 	Processes              = []string{"System", "Idle", "smss.exe", "csrss.exe", "wininit.exe", "winlogon.exe", "services.exe", "lsass.exe", "svchost.exe",
 		"sihost.exe", "Explorer.EXE", "ShellHost.exe", "taskhostw.exe", "SearchHost.exe", "StartMenuExperienceHost.exe", "RuntimeBroker.exe",
 		"msedgewebview2.exe", "powershell.exe", "full-line-inference.exe", "conhost.exe", "cef_server.exe", "fsnotifier.exe", "GameBarPresenceWriter.exe",
